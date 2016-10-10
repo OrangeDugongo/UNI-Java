@@ -6,7 +6,7 @@ public class RettangoloDaTastiera{
 
  	Rectangle ret, retMax=null;
 	int i=0, imax=0;
-    Scanner in = new Scanner(System.in);
+	Scanner in = new Scanner(System.in);
 
 	System.out.println("Inserisci la x, la y, la larghezza e l'altezza: ");
 	ret = new Rectangle(in.nextInt(), in.nextInt(), 	in.nextInt(), 	in.nextInt());
