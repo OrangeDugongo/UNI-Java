@@ -2,21 +2,17 @@ import java.io.*;
 
 public class NameTester{
     public static void main(String [] args){
-        Name persona1 = new Name();
+        
+        Name persona = new Name();
+        persona.setTitle("Sig.");
+        persona.print(System.out);  //We expect Sig.
 
-        persona1.setTitolo("Sig.");
-        System.out.println(persona1.title());
+        persona = new Name("Mario", "Rossi");
+        System.out.println(persona.getInitials());  //We expect M. R.
 
-        persona1 = new Name("Mario", "Rossi");
-        persona1.setTitolo("Sig.");
-        System.out.println(persona1.iniziali());
-
-        persona1 = new Name("Maria", "Bianchi", "Sig.na");
-        System.out.println(persona1.nomeCognome());
-        System.out.println(persona1.title());
-
-
-
+        persona = new Name("Jon", "Snow", "King in the North");
+        System.out.println(persona.getNameSurname());  //We expect Jon Snow
+        System.out.println(persona.getTitleNameSurname()); //We expect a very big spoiler
 
     }
 }
