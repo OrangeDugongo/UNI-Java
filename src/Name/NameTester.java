@@ -1,18 +1,30 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class NameTester{
-    public static void main(String [] args){
-        
-        Name persona = new Name();
-        persona.setTitle("Sig.");
-        persona.print(System.out);  //We expect Sig.
+    public static void main(String [] args) throws Exception{
 
-        persona = new Name("Mario", "Rossi");
-        System.out.println(persona.getInitials());  //We expect M. R.
+        Scanner sc = new Scanner(new File("src"));
+        Name persona = Name.read(sc);
+        Name persona1;
 
-        persona = new Name("Jon", "Snow", "King in the North");
-        System.out.println(persona.getNameSurname());  //We expect Jon Snow
-        System.out.println(persona.getTitleNameSurname()); //We expect a very big spoiler
+        if(persona!=null)
+            persona.print(System.out);
+        else
+            System.out.println("ERROR");
+
+        persona.setTitle("Hand of the Queen");
+        persona.print(System.out);
+        System.out.println(persona.getInitials());  //We expect T. L.
+
+        persona1 = new Name("King in the North", "Jon", "Snow");
+        System.out.println(persona1.getNameSurname());  //We expect Jon Snow
+        System.out.println(persona1.getTitleNameSurname()); //We expect a spoiler
+
+        if(persona.equals(persona1))    //We expect Different
+            System.out.println("Equal");
+        else
+            System.out.println("Different");
 
     }
 }

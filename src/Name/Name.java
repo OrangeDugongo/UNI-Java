@@ -1,18 +1,9 @@
-import  java.io.PrintStream;
+import java.io.PrintStream;
+import java.util.Scanner;
 /**
     This class manages objects characterised by a name, a surname and a title.
 */
 public class Name{
-
-    /**
-        This constructor uses a default title, name and surname.
-    */
-    public Name(){
-        name="";
-        sname="";
-        title="";
-    }
-
 
     /**
         This constructor sets the values of name and surname, and uses a default title.
@@ -28,11 +19,11 @@ public class Name{
 
     /**
         This constructor sets the values of name, surname and title.
+        @param title The value of the title
         @param name The value of the name.
         @param sname The value of the surname.
-        @param title The value of the title
     */
-    public Name(String name, String sname, String title){
+    public Name(String title, String name, String sname){
         this.name=name;
         this.sname=sname;
         this.title=title;
@@ -76,11 +67,44 @@ public class Name{
 
 
     /**
+        Indicates whether some other object is "equal to" this one.
+        @param n the reference object with which to compare.
+        @return a boolean.
+    **/
+    public boolean equals(Name n){
+        return this.name.equals(n.name) && this.sname.equals(n.sname) && this.title.equals(n.title);
+    }
+
+
+    /**
         This method prints the value of the istance variables.
         @param ps The object which must print the values.
     **/
     public void print(PrintStream ps){
-        ps.println(getTitleNameSurname());
+        ps.println(title);
+        ps.println(name);
+        ps.println(sname);
+    }
+
+
+    /**
+        This method reads the value of the istance variables.
+        @param sc The Scanner.
+        @return The new Name
+    **/
+    public static Name read(Scanner sc) throws Exception{
+        String title, name, sname;
+        if(sc.hasNext()){
+            title=sc.nextLine();
+            if(sc.hasNext()){
+                name = sc.nextLine();
+                if(sc.hasNext()){
+                    sname=sc.nextLine();
+                    return new Name(title, name, sname);
+                }
+            }
+        }
+        return null;
     }
 
 
