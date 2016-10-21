@@ -81,6 +81,7 @@ public class Time{
         this.h=(totm/60)%24;
         if(this.h==0){
             this.h+=12;
+            this.id="am";
         }else if(this.h==12){
             this.id="pm";
         }else if(this.h>12){
