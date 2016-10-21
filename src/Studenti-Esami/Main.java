@@ -24,9 +24,7 @@ public class Main{
                 sc=new Scanner(srcEsami);
                 e=Esame.read(sc);
                 while(e!=null){
-                    System.out.println(e.getVoto()+" "+e.getMat()+" "+e.getNome());
                     if(e.lookUp(s.getMat())){
-                        System.out.println("ok "+e.getVoto());
                         media+=e.getVoto();
                         i++;
                     }
@@ -37,6 +35,9 @@ public class Main{
             s=Studente.read(sc);
         }
 
-        System.out.println("lo studente "+s.getNomeCognome()+" ha la media di: "+media/i);
+        if(s!=null)
+            System.out.println("lo studente "+s.getNomeCognome()+" ha la media di: "+media/i);
+        else
+            System.out.println("Impossibile trovare delle corrispondenze.");
     }
 }

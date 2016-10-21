@@ -26,10 +26,10 @@ public class Studente{
         String nome;
         String cnome;
         int mat;
-        if(sc.hasNextLine()){
-            nome=sc.nextLine();
-            if(sc.hasNextLine()){
-                cnome=sc.nextLine();
+        if(sc.hasNext()){
+            nome=sc.next();
+            if(sc.hasNext()){
+                cnome=sc.next();
                 if(sc.hasNextInt()){
                     mat=sc.nextInt();
                     return new Studente(nome, cnome, mat);

@@ -30,8 +30,8 @@ public class Esame{
         String nome;
         int voto;
         int mat;
-        if(sc.hasNextLine()){
-            nome=sc.nextLine();
+        if(sc.hasNext()){
+            nome=sc.next();
             if(sc.hasNextInt()){
                 voto=sc.nextInt();
                 if(sc.hasNextInt()){
