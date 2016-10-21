@@ -9,7 +9,6 @@ public class Main{
         Esame e;
         Studente s;
         int i=0;
-        boolean trovato = false;
         double media=0;
         String nome, cnome;
 
@@ -20,24 +19,24 @@ public class Main{
 
         sc=new Scanner(srcStudenti);
         s=Studente.read(sc);
-        while(s!=null && !trovato){
-            s=s.lookUp(nome, cnome);
-            if(s!=null){
-                trovato=true;
+        while(s!=null){
+            if(s.lookUp(nome, cnome)){
                 sc=new Scanner(srcEsami);
                 e=Esame.read(sc);
                 while(e!=null){
-                    e=e.lookUp(s.getMat());
-                    if(e!=null){
+                    System.out.println(e.getVoto()+" "+e.getMat()+" "+e.getNome());
+                    if(e.lookUp(s.getMat())){
+                        System.out.println("ok "+e.getVoto());
                         media+=e.getVoto();
                         i++;
                     }
                     e=Esame.read(sc);
                 }
+                break;
             }
             s=Studente.read(sc);
         }
 
-        System.out.println("lo studente "+s.getNomeCognome()+"ha la media di: "+media/i);
+        System.out.println("lo studente "+s.getNomeCognome()+" ha la media di: "+media/i);
     }
 }

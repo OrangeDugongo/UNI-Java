@@ -16,21 +16,21 @@ public class Studente{
         return nome.concat(" ").concat(cnome);
     }
 
-    public Studente lookUp(String nome, String cnome){
+    public boolean lookUp(String nome, String cnome){
         if(this.nome.equals(nome) && this.cnome.equals(cnome))
-            return this;
-        return null;
+            return true;
+        return false;
     }
 
     public static Studente read(Scanner sc) throws Exception{
         String nome;
         String cnome;
         int mat;
-        if(sc.hasNext()){
+        if(sc.hasNextLine()){
             nome=sc.nextLine();
-            if(sc.hasNext()){
+            if(sc.hasNextLine()){
                 cnome=sc.nextLine();
-                if(sc.hasNext()){
+                if(sc.hasNextInt()){
                     mat=sc.nextInt();
                     return new Studente(nome, cnome, mat);
                 }
