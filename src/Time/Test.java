@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Test{
     public static void main(String [] args){
-        Time t = new Time(12, 50, "am");
+        Time t = new Time(11, 00, "am");
         Time t2 = new Time(1, 1, "pm");
         Scanner sc = new Scanner(System.in);
 

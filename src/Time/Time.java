@@ -53,10 +53,18 @@ public class Time{
         return null;
     }
 
+    private boolean isMidday(){
+        return h==12 && id.equals("pm");
+    }
+
+    private boolean isMidnight(){
+        return h==12 && id.equals("am");
+    }
+
     public int toMinute(){
-        if(id.equals("pm"))
+        if((id.equals("pm") && !isMidday()) || isMidnight())
             h+=12;
-        return h*60+m;
+        return (h*60+m)%(24*60);
     }
 
     public boolean isAfter(Time t){
@@ -71,7 +79,11 @@ public class Time{
         int totm=this.toMinute() + m%(24*60);
         this.m=totm%60;
         this.h=(totm/60)%24;
-        if(this.h>12){
+        if(this.h==0){
+            this.h+=12;
+        }else if(this.h==12){
+            this.id="pm";
+        }else if(this.h>12){
             this.id="pm";
             this.h-=12;
         }else
@@ -79,14 +91,7 @@ public class Time{
     }
 
     public void shift(int h, int m){
-        int totm=this.toMinute() + (m+h*60)%(24*60);
-        this.m=totm%60;
-        this.h=(totm/60)%24;
-        if(this.h>12){
-            this.id="pm";
-            this.h-=12;
-        }else
-            this.id="am";
+        shift(h*60+m);
     }
 
 
