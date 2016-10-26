@@ -1,45 +1,50 @@
 import java.util.Scanner;
+import java.io.PrintStream;
 
 public class Studente{
 
-    public Studente(String nome, String cnome, int mat){
+    public Studente(String nome, String cnome, int matricola){
         this.nome=nome;
         this.cnome=cnome;
-        this.mat=mat;
+        this.matricola=matricola;
     }
 
-    public int getMat(){
-        return mat;
+    public int getMatricola(){
+        return matricola;
     }
 
     public String getNomeCognome(){
         return nome.concat(" ").concat(cnome);
     }
 
-    public boolean lookUp(String nome, String cnome){
-        if(this.nome.equals(nome) && this.cnome.equals(cnome))
-            return true;
-        return false;
+    public boolean equals(String nome, String cnome){
+        return this.nome.equals(nome) && this.cnome.equals(cnome);
     }
 
     public static Studente read(Scanner sc) throws Exception{
         String nome;
         String cnome;
-        int mat;
-        if(sc.hasNext()){
-            nome=sc.next();
-            if(sc.hasNext()){
-                cnome=sc.next();
-                if(sc.hasNextInt()){
-                    mat=sc.nextInt();
-                    return new Studente(nome, cnome, mat);
-                }
-            }
-        }
-        return null;
+        int matricola;
+
+        if(!sc.hasNext()) return null;
+        nome=sc.next();
+        if(!sc.hasNext()) return null;
+        cnome=sc.next();
+        if(!sc.hasNextInt()) return null;
+        matricola=sc.nextInt();
+
+        return new Studente(nome, cnome, matricola);
+    }
+
+    public String toString(){
+        return nome + " " + cnome + " " + matricola;
+    }
+
+    public void print(PrintStream ps){
+        ps.println(toString());
     }
 
     private String nome;
     private String cnome;
-    private int mat;
+    private int matricola;
 }

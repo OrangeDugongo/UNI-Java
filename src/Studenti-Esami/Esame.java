@@ -1,49 +1,59 @@
 import java.util.Scanner;
+import java.io.PrintStream;
 
 public class Esame{
 
-    public Esame(String nome, int voto, int mat){
-        this.nome=nome;
+    public Esame(int matricola, String nomeEsame, String data, int voto){
+        this.nomeEsame=nomeEsame;
         this.voto=voto;
-        this.mat=mat;
+        this.matricola=matricola;
+        this.data=data;
     }
 
     public int getVoto(){
         return voto;
     }
 
-    public int getMat(){
-        return mat;
+    public int getMatricola(){
+        return matricola;
     }
 
-    public String getNome(){
-        return nome;
+    public String getNomeEsame(){
+        return nomeEsame;
     }
 
-    public boolean lookUp(int mat){
-        if(this.mat==mat)
-            return true;
-        return false;
+    public String getData(){
+        return data;
+    }
+
+    public String toString(){
+        return matricola + " " + nomeEsame + " " + data + " " + voto;
+    }
+
+    public void print(PrintStream ps){
+        ps.println(toString());
     }
 
     public static Esame read(Scanner sc) throws Exception{
-        String nome;
+        String nomeEsame;
         int voto;
-        int mat;
-        if(sc.hasNext()){
-            nome=sc.next();
-            if(sc.hasNextInt()){
-                voto=sc.nextInt();
-                if(sc.hasNextInt()){
-                    mat=sc.nextInt();
-                    return new Esame(nome, voto, mat);
-                }
-            }
-        }
-        return null;
+        int matricola;
+        String data;
+
+        if(!sc.hasNextInt()) return null;
+        matricola=sc.nextInt();
+        if(!sc.hasNext()) return null;
+        nomeEsame=sc.next();
+        if(!sc.hasNext()) return null;
+        data=sc.next();
+        if(!sc.hasNextInt()) return null;
+        voto=sc.nextInt();
+
+        return new Esame(matricola, nomeEsame, data, voto);
     }
 
-    private String nome;
+    private String nomeEsame;
+    private String data;
     private int voto;
-    private int mat;
+    private int matricola;
 }
