@@ -75,7 +75,7 @@ public class Time{
         return !this.isAfter(t);
     }
 
-    public void shift(int m){
+    public void addDuratio(int m){
         int totm=this.toMinute() + m%(24*60);
         this.m=totm%60;
         this.h=(totm/60)%24;
@@ -91,8 +91,8 @@ public class Time{
             this.id="am";
     }
 
-    public void shift(int h, int m){
-        shift(h*60+m);
+    public void addDuratio(int h, int m){
+        addDuratio(h*60+m);
     }
 
 
