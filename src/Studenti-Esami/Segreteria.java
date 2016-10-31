@@ -40,26 +40,38 @@ public class Segreteria{
 
     public Segreteria filtroMaggioreVoto(int voto){
         ArrayList<Esame> esami = new ArrayList<Esame>();
+        ArrayList<Studente> studenti = new ArrayList<Studente>();
 
         for(Esame e: this.esami){
-            if(e.getVoto()>=voto)
+            if(e.getVoto()>=voto){
                 esami.add(e);
+                for(Studente s: this.studenti)
+                    if(e.getMatricola()==s.getMatricola())
+                        studenti.add(s);
+            }
+
         }
 
         if(esami.size()==0) return null;
-        return new Segreteria(esami, this.studenti);
+        return new Segreteria(esami, studenti);
     }
 
     public Segreteria filtroMinoreVoto(int voto){
         ArrayList<Esame> esami = new ArrayList<Esame>();
+        ArrayList<Studente> studenti = new ArrayList<Studente>();
 
         for(Esame e: this.esami){
-            if(e.getVoto()<voto)
+            if(e.getVoto()<voto){
                 esami.add(e);
+                for(Studente s: this.studenti)
+                    if(e.getMatricola()==s.getMatricola())
+                        studenti.add(s);
+            }
+
         }
 
         if(esami.size()==0) return null;
-        return new Segreteria(esami, this.studenti);
+        return new Segreteria(esami, studenti);
     }
 
     public Segreteria filtroMatricola(int matricola){
