@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.Scanner;
+import java.lang.Math;
 
 public class Matrice{
 
@@ -95,15 +96,36 @@ public class Matrice{
         return m2;
     }
 
-    /*
-    public static double det(m){
-        if(this.a==2 && this.b==2)
-            return m.getElement(0,0)*m.getElement(1,1)-m.getElement(1,0)*m.getElement(0,1);
-        else{
-
+    //Probably not work
+    private Matrice copy(int x, int y){
+        int i1, j1, i2=0, j2=0;
+        Matrice m2 = new Matrice(this.a-1,this.b-1);
+        for(i1=0;i1<this.a;i1++){
+            if(i1==x) continue;
+            for(j1=0;j1<this.b;j1++){
+                if(j1==y) continue;
+                m2.setElement(i2, j2++, getElement(i1, j1));
+            }
+            i2++;
         }
 
-    }*/
+        return m2;
+    }
+
+    //Probably not work
+    public double det(){
+        int j;
+        double determinante=0;
+        if(this.a==2 && this.b==2)
+            return getElement(0,0)*getElement(1,1)-getElement(1,0)*getElement(0,1);
+        else{
+            for(j=0;j<this.a;j++){
+                determinante+=Math.pow(-1,j)*copy(0, j).det();
+            }
+            return determinante;
+        }
+
+    }
 
     public Matrice product(Matrice m2){
         int a=this.a;
