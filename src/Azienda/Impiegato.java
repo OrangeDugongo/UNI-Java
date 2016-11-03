@@ -58,7 +58,7 @@ public class Impiegato{
 
     public String toString(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        return codiceFiscale+" "+nome+" "+cnome+" "+sdf.format(data)+" "+livello+" "+paga+"€.";
+        return codiceFiscale+" "+nome+" "+cnome+" "+sdf.format(data)+" "+livello+" "+paga+".";
     }
 
     public void print(PrintStream ps){
