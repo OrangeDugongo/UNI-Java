@@ -11,7 +11,7 @@ public class Test{
         ps.println("Stampa degli impiegati con paga compresa tra 50000 e 80000");
         azienda.filtroPagaMinore(80000).filtroPagaMaggiore(50000).print(ps);
 
-        ps.println("Stampa degli ilmpiegati nella sede PP01 nati dopo il 1990");
+        ps.println("Stampa degli impiegati nella sede PP01 nati dopo il 1990");
         azienda.filtroNatoDopo("31/12/1989").filtroSedeId("PP01").print(ps);
 
         ps.println("Stampa degli impiegati di livello over9000");

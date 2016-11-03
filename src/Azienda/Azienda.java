@@ -100,19 +100,15 @@ public class Azienda{
     public Azienda filtroLivello(String livello){
         ArrayList<Sede> sediFilter = new ArrayList<Sede>();
         ArrayList<Impiegato> impiegatiFilter;
-        boolean almenoUno;
 
         for(Sede s: sedi){
-            almenoUno=false;
             impiegatiFilter=new ArrayList<Impiegato>();
             for(Impiegato i: s.getImpiegati()){
-                if(i.getLivello().equals(livello)){
+                if(i.getLivello().equals(livello))
                     impiegatiFilter.add(i);
-                    almenoUno=true;
-                }
-
             }
-            if(almenoUno)
+
+            if(impiegatiFilter.size()>0)
                 sediFilter.add(s.copySede(impiegatiFilter));
 
         }
@@ -122,19 +118,15 @@ public class Azienda{
     public Azienda filtroNome(String nome){
         ArrayList<Sede> sediFilter = new ArrayList<Sede>();
         ArrayList<Impiegato> impiegatiFilter;
-        boolean almenoUno;
 
         for(Sede s: sedi){
-            almenoUno=false;
             impiegatiFilter=new ArrayList<Impiegato>();
             for(Impiegato i: s.getImpiegati()){
-                if(i.getNome().equals(nome)){
+                if(i.getNome().equals(nome))
                     impiegatiFilter.add(i);
-                    almenoUno=true;
-                }
-
             }
-            if(almenoUno)
+
+            if(impiegatiFilter.size()>0)
                 sediFilter.add(s.copySede(impiegatiFilter));
 
         }
@@ -144,19 +136,15 @@ public class Azienda{
     public Azienda filtroPagaMaggiore(double paga){
         ArrayList<Sede> sediFilter = new ArrayList<Sede>();
         ArrayList<Impiegato> impiegatiFilter;
-        boolean almenoUno;
 
         for(Sede s: sedi){
-            almenoUno=false;
             impiegatiFilter=new ArrayList<Impiegato>();
             for(Impiegato i: s.getImpiegati()){
-                if(i.getPaga()>=paga){
+                if(i.getPaga()>=paga)
                     impiegatiFilter.add(i);
-                    almenoUno=true;
-                }
-
             }
-            if(almenoUno)
+
+            if(impiegatiFilter.size()>0)
                 sediFilter.add(s.copySede(impiegatiFilter));
 
         }
@@ -166,19 +154,15 @@ public class Azienda{
     public Azienda filtroPagaMinore(double paga){
         ArrayList<Sede> sediFilter = new ArrayList<Sede>();
         ArrayList<Impiegato> impiegatiFilter;
-        boolean almenoUno;
 
         for(Sede s: sedi){
-            almenoUno=false;
             impiegatiFilter=new ArrayList<Impiegato>();
             for(Impiegato i: s.getImpiegati()){
-                if(i.getPaga()<paga){
+                if(i.getPaga()<paga)
                     impiegatiFilter.add(i);
-                    almenoUno=true;
-                }
-
             }
-            if(almenoUno)
+
+            if(impiegatiFilter.size()>0)
                 sediFilter.add(s.copySede(impiegatiFilter));
 
         }
@@ -188,21 +172,17 @@ public class Azienda{
     public Azienda filtroNatoPrima(String dataString) throws Exception{
         ArrayList<Sede> sediFilter = new ArrayList<Sede>();
         ArrayList<Impiegato> impiegatiFilter;
-        boolean almenoUno;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date data = sdf.parse(dataString);
 
         for(Sede s: sedi){
-            almenoUno=false;
             impiegatiFilter=new ArrayList<Impiegato>();
             for(Impiegato i: s.getImpiegati()){
-                if(i.getData().before(data)){
+                if(i.getData().before(data))
                     impiegatiFilter.add(i);
-                    almenoUno=true;
-                }
-
             }
-            if(almenoUno)
+
+            if(impiegatiFilter.size()>0)
                 sediFilter.add(s.copySede(impiegatiFilter));
 
         }
@@ -212,22 +192,18 @@ public class Azienda{
     public Azienda filtroNatoDopo(String dataString) throws Exception{
         ArrayList<Sede> sediFilter = new ArrayList<Sede>();
         ArrayList<Impiegato> impiegatiFilter;
-        boolean almenoUno;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date data = sdf.parse(dataString);
 
         for(Sede s: sedi){
-            almenoUno=false;
             impiegatiFilter=new ArrayList<Impiegato>();
             for(Impiegato i: s.getImpiegati()){
 
-                if(i.getData().after(data)){
+                if(i.getData().after(data))
                     impiegatiFilter.add(i);
-                    almenoUno=true;
-                }
-
             }
-            if(almenoUno)
+
+            if(impiegatiFilter.size()>0)
                 sediFilter.add(s.copySede(impiegatiFilter));
 
         }
