@@ -64,18 +64,17 @@ public class Azienda{
 
     public Azienda filtroSedeId(String id){
         boolean trovato = false;
-        int j=0;
+        int i=0;
         ArrayList<Sede> sediFilter = new ArrayList<Sede>();
 
-        while(j<sedi.size() && !trovato){
-            if(sedi.get(j).getId().equals(id))
-                trovato = true;
-            j++;
+        while(i<sedi.size() && !trovato){
+            if(sedi.get(i).getId().equals(id)) trovato = true;
+            else i++;
         }
 
         if(!trovato) return null;
 
-        sediFilter.add(sedi.get(j-1));
+        sediFilter.add(sedi.get(i));
         return new Azienda(sediFilter);
     }
 
