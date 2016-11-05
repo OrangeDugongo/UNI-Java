@@ -79,8 +79,6 @@ public class Azienda{
     }
 
     public Azienda filtroStato(String stato){
-        boolean trovato = false;
-        int j=0;
         ArrayList<Sede> sediFilter = new ArrayList<Sede>();
 
         for(Sede s: sedi)
