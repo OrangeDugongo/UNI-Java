@@ -16,6 +16,10 @@ public class Impiegato{
         this.data=data;
     }
 
+    
+
+    //METODI GET
+
     public String getCodiceFiscale(){
         return codiceFiscale;
     }
@@ -44,6 +48,10 @@ public class Impiegato{
         return paga;
     }
 
+
+
+    //METODI SET
+
     public void setPaga(double newPaga){
         paga=newPaga;
     }
@@ -55,6 +63,10 @@ public class Impiegato{
     public void setSedeId(String newSedeId){
         sedeId=newSedeId;
     }
+
+
+
+    //I/O
 
     public String toString(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

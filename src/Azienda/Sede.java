@@ -12,6 +12,10 @@ public class Sede{
         impiegati = new ArrayList<Impiegato>();
     }
 
+
+
+    //METODI GET
+
     public String getId(){
         return id;
     }
@@ -32,11 +36,19 @@ public class Sede{
         return impiegati;
     }
 
+
+
+    //COPY
+
     public Sede copySede(ArrayList<Impiegato> impiegati){
         Sede sede = new Sede(getId(), getVia(), getComune(), getStato());
         sede.impiegati=impiegati;
         return sede;
     }
+
+
+
+    //I/O
 
     public String toString(){
         return id + " " + via + " " + comune + " " + stato + ".";
