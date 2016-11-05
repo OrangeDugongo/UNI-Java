@@ -12,10 +12,10 @@ public class Test{
         azienda.filtroPagaMinore(80000).filtroPagaMaggiore(50000).print(ps);
 
         ps.println("\n+ Stampa degli impiegati nella sede PP01 nati dopo il 1990");
-        azienda.filtroNatoDopo("31/12/1989").filtroSedeId("PP01").print(ps);
+        azienda.filtroNatoDopo("31/12/1989").filtroSedeId("PP01").print(ps);//L'ordine con cui si applicano i filtri è indifferente
 
         ps.println("\n+ Stampa degli impiegati nella sede PP01 nati dopo il 1990");
-        azienda.filtroSedeId("PP01").filtroNatoDopo("31/12/1989").print(ps);
+        azienda.filtroSedeId("PP01").filtroNatoDopo("31/12/1989").print(ps);//L'ordine con cui si applicano i filtri è indifferente
 
         ps.println("\n+ Stampa degli impiegati di livello over9000");
         azienda.filtroLivello("Over9000").print(ps);
