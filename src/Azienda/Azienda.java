@@ -100,10 +100,9 @@ public class Azienda{
 
         for(Sede s: sedi){
             impiegatiFilter=new ArrayList<Impiegato>();
-            for(Impiegato i: s.getImpiegati()){
+            for(Impiegato i: s.getImpiegati())
                 if(i.getLivello().equals(livello))
                     impiegatiFilter.add(i);
-            }
 
             if(impiegatiFilter.size()>0)
                 sediFilter.add(s.copySede(impiegatiFilter));
@@ -118,10 +117,9 @@ public class Azienda{
 
         for(Sede s: sedi){
             impiegatiFilter=new ArrayList<Impiegato>();
-            for(Impiegato i: s.getImpiegati()){
+            for(Impiegato i: s.getImpiegati())
                 if(i.getNome().equals(nome))
                     impiegatiFilter.add(i);
-            }
 
             if(impiegatiFilter.size()>0)
                 sediFilter.add(s.copySede(impiegatiFilter));
@@ -136,10 +134,9 @@ public class Azienda{
 
         for(Sede s: sedi){
             impiegatiFilter=new ArrayList<Impiegato>();
-            for(Impiegato i: s.getImpiegati()){
+            for(Impiegato i: s.getImpiegati())
                 if(i.getPaga()>=paga)
                     impiegatiFilter.add(i);
-            }
 
             if(impiegatiFilter.size()>0)
                 sediFilter.add(s.copySede(impiegatiFilter));
@@ -154,10 +151,9 @@ public class Azienda{
 
         for(Sede s: sedi){
             impiegatiFilter=new ArrayList<Impiegato>();
-            for(Impiegato i: s.getImpiegati()){
+            for(Impiegato i: s.getImpiegati())
                 if(i.getPaga()<paga)
                     impiegatiFilter.add(i);
-            }
 
             if(impiegatiFilter.size()>0)
                 sediFilter.add(s.copySede(impiegatiFilter));
@@ -174,10 +170,9 @@ public class Azienda{
 
         for(Sede s: sedi){
             impiegatiFilter=new ArrayList<Impiegato>();
-            for(Impiegato i: s.getImpiegati()){
+            for(Impiegato i: s.getImpiegati())
                 if(i.getData().before(data))
                     impiegatiFilter.add(i);
-            }
 
             if(impiegatiFilter.size()>0)
                 sediFilter.add(s.copySede(impiegatiFilter));
@@ -194,11 +189,9 @@ public class Azienda{
 
         for(Sede s: sedi){
             impiegatiFilter=new ArrayList<Impiegato>();
-            for(Impiegato i: s.getImpiegati()){
-
+            for(Impiegato i: s.getImpiegati())
                 if(i.getData().after(data))
                     impiegatiFilter.add(i);
-            }
 
             if(impiegatiFilter.size()>0)
                 sediFilter.add(s.copySede(impiegatiFilter));
