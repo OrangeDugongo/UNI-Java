@@ -36,6 +36,36 @@ public class Manager{
 		
 		return max;
 	}
+
+	public FiguraGeometrica getAreaMin() {
+		FiguraGeometrica min = figure.get(0);
+
+		for (int i = 1; i < figure.size(); i++)
+			if (min.calcolaArea() > figure.get(i).calcolaArea())
+				min = figure.get(i);
+		
+		return min;
+	}
+	
+	public FiguraGeometrica getPerimetroMax(){
+		FiguraGeometrica max = figure.get(0);
+
+		for (int i = 1; i < figure.size(); i++)
+			if (max.calcolaPerimetro() < figure.get(i).calcolaPerimetro())
+				max = figure.get(i);
+		
+		return max;
+	}
+
+	public FiguraGeometrica getPerimetroMin(){
+		FiguraGeometrica min = figure.get(0);
+
+		for (int i = 1; i < figure.size(); i++)
+			if (min.calcolaPerimetro() > figure.get(i).calcolaPerimetro())
+				min = figure.get(i);
+
+		return min;
+	}
 	
 	public void print(PrintStream ps){
 		for(FiguraGeometrica fg: figure)
