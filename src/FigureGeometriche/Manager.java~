@@ -6,7 +6,7 @@ public class Manager{
 	public Manager(Scanner sc) throws Exception{
 		figure = new ArrayList<FiguraGeometrica>();
 		FiguraGeometrica fg=read(sc);
-		while(fg!=null){//Alla prima lettura nulla interrompe l'intero processo di lettura
+		while(fg!=null){
 			figure.add(fg);
 			fg=read(sc);
 		}
