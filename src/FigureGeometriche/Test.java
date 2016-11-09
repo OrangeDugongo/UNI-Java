@@ -11,6 +11,6 @@ public class Test {
 		ps.println("Figura con area maggiore");
 		manager.getAreaMax().print(ps);
 		ps.println("Figura con perimetro minore");
-		manager.getPerimetroMin().print(System.out);
+		manager.getPerimetroMin().print(ps);
 	}
 }
