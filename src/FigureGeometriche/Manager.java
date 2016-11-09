@@ -56,8 +56,16 @@ public class Manager{
 	}
 
 	public void print(PrintStream ps){
-		for(FiguraGeometrica fg: figure)
+		for(FiguraGeometrica fg: figure){
+			if(fg instanceof FiguraRegolare) 
+				ps.print("Regolare ");
+			else if(fg instanceof Rettangolo)
+				ps.print("Rettangolo ");
+			else
+				ps.print("Cerchio ");
 			fg.print(ps);
+
+		}
 	}
 
 	private ArrayList<FiguraGeometrica> figure;

@@ -27,9 +27,14 @@ public class Rettangolo implements FiguraGeometrica{
 		return base*altezza;
 	}
 	
-	public void print(PrintStream ps){
-		ps.println("Rettangolo "+base+"x"+altezza);
+	public String toString(){
+		return "Rettangolo "+base+"x"+altezza;
 	}
+
+	public void print(PrintStream ps){
+		ps.println(base+" "+altezza);
+	}
+
 
 	private double base;
 	private double altezza;

@@ -21,8 +21,12 @@ public class Cerchio implements FiguraGeometrica{
 		return raggio*raggio*3.14;
 	}
 
+	public String toString(){
+		return "Cerchio di raggio: "+raggio;
+	}
+
 	public void print(PrintStream ps){
-		ps.println("Cerchio di raggio: "+raggio);
+		ps.println(raggio);
 	}
 	
 	private double raggio;

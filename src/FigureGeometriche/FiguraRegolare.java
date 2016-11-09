@@ -31,8 +31,12 @@ public class FiguraRegolare implements FiguraGeometrica{
 		return (calcolaPerimetro()*apotema)/2;
 	}
 	
+	public String toString(){
+		return "Figura regolare di "+nlati+" lati lunghi "+lato;
+	}
+
 	public void print(PrintStream ps){
-		ps.println("Figura regolare di "+nlati+" lunghi "+lato);
+		ps.println(lato+" "+apotema/lato+" "+nlati);
 	}
 
 	private double lato;
