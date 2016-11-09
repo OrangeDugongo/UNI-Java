@@ -9,8 +9,8 @@ public class Test {
 		PrintStream ps = System.out;
 		
 		ps.println("Figura con area maggiore");
-		manager.getAreaMax().print(ps);
+		manager.getMax("area").print(ps);
 		ps.println("Figura con perimetro minore");
-		manager.getPerimetroMin().print(ps);
+		manager.getMin("perimetro").print(ps);
 	}
 }
