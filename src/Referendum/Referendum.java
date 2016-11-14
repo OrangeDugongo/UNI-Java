@@ -49,7 +49,9 @@ public class Referendum {
         scheda.add(voto, BorderLayout.SOUTH);
         frame.add(scheda);
 
-        ActionListener listener = new SiListener();
-        si.addActionListener(listener);
+        ActionListener siListener = new SiListener();
+        ActionListener noListener = new NoListener();
+        si.addActionListener(siListener);
+        no.addActionListener(noListener);
     }
 }
