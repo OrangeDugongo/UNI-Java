@@ -7,5 +7,6 @@ public class SiListener implements ActionListener{
     public void actionPerformed(ActionEvent event){
         Random rand = new Random();
         String str[] = {"Grazie per aver venduto la sovranità popolare", "Radical chic di sto c@zzo", "Sei appena entrato in dittatura"};
-       JOptionPane.showMessageDialog(null, str[rand.nextInt(3)]);    }
+       JOptionPane.showMessageDialog(null, str[rand.nextInt(3)]);    
+    }
 }
