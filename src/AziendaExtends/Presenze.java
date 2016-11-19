@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
-public class OreLavoro{
+public class Presenze{
 
-    public OreLavoro(int oreLavoro, String codiceFiscale){
+    public Presenze(int oreLavoro, String codiceFiscale){
         this.oreLavoro=oreLavoro;
         this.codiceFiscale=codiceFiscale;
     }
 
-    public static OreLavoro read(Scanner sc) throws Exception{
+    public static Presenze read(Scanner sc) throws Exception{
         String codiceFiscale;
         int oreLavoro;
 
@@ -16,7 +16,7 @@ public class OreLavoro{
         if(!sc.hasNextInt()) return null;
         oreLavoro=sc.nextInt();
 
-        return new OreLavoro(oreLavoro, codiceFiscale);
+        return new Presenze(oreLavoro, codiceFiscale);
     }
 
     public int getOreLavoro(){

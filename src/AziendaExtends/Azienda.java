@@ -4,20 +4,24 @@ import java.util.ArrayList;
 
 public class Azienda{
 
-    public Azienda(Scanner scDipendenti, Scanner scOreLavoro) throws Exception{
-        Dipendente dip=read(scDipendenti);
-        ArrayList<OreLavoro> oreLavoro = new ArrayList<OreLavoro>();
+    public Azienda(Scanner scDipendenti, Scanner scPresenze) throws Exception{
+        ArrayList<Presenze> presenze = new ArrayList<Presenze>();
         dipendenti = new ArrayList<Dipendente>();
-        OreLavoro ol=OreLavoro.read(scOreLavoro);
+
+        Presenze ol=Presenze.read(scPresenze);
         while(ol!=null){
-            oreLavoro.add(ol);
-            ol=OreLavoro.read(scOreLavoro);
+            presenze.add(ol);
+            ol=Presenze.read(scPresenze);
         }
+
+        Dipendente dip=read(scDipendenti);
         while(dip!=null){
-            for(OreLavoro ore: oreLavoro)
-                if(dip.getCodiceFiscale().equals(ore.getCodiceFiscale()))
-                    dip.setOreLavoro(ore.getOreLavoro());
-                    
+            for(Presenze p: presenze)
+                if(dip.getCodiceFiscale().equals(p.getCodiceFiscale())){
+                    dip.setOreLavoro(p.getOreLavoro());
+                    break;
+                }
+                     
             dipendenti.add(dip);
             dip=read(scDipendenti);
         }
