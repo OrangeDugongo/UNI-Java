@@ -8,10 +8,10 @@ public class Azienda{
         ArrayList<Presenze> presenze = new ArrayList<Presenze>();
         dipendenti = new ArrayList<Dipendente>();
 
-        Presenze ol=Presenze.read(scPresenze);
-        while(ol!=null){
-            presenze.add(ol);
-            ol=Presenze.read(scPresenze);
+        Presenze pres=Presenze.read(scPresenze);
+        while(pres!=null){
+            presenze.add(pres);
+            pres=Presenze.read(scPresenze);
         }
 
         Dipendente dip=read(scDipendenti);
@@ -19,7 +19,7 @@ public class Azienda{
             for(Presenze p: presenze)
                 if(dip.getCodiceFiscale().equals(p.getCodiceFiscale())){
                     dip.setOreLavoro(p.getOreLavoro());
-                    break;
+                    break;//non è molto ortodosso
                 }
                      
             dipendenti.add(dip);
