@@ -16,10 +16,6 @@ public class AutoUsata extends Auto{
         return codiceProprietario;
     }
 
-    public double getPrezzoFinale(){
-        return super.getPrezzo();
-    }
-
     public static AutoUsata read(Scanner sc) throws Exception{
         String costruttore, modello, colore, cilindrata, codiceProprietario;
         double prezzo;

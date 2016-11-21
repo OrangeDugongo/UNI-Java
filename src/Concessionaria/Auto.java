@@ -30,6 +30,10 @@ public class Auto{
         return prezzo;
     }
 
+    public double getPrezzoFinale(){
+        return prezzo;
+    }
+
     public void setPrezzo(double newPrezzo){
         this.prezzo=newPrezzo;
     }
