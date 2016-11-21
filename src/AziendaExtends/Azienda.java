@@ -4,27 +4,17 @@ import java.util.ArrayList;
 
 public class Azienda{
 
-    public Azienda(Scanner scDipendenti, Scanner scPresenze) throws Exception{
-        ArrayList<Presenze> presenze = new ArrayList<Presenze>();
+    public Azienda(Scanner scDipendenti) throws Exception{
         dipendenti = new ArrayList<Dipendente>();
-
-        Presenze pres=Presenze.read(scPresenze);
-        while(pres!=null){
-            presenze.add(pres);
-            pres=Presenze.read(scPresenze);
-        }
-
         Dipendente dip=read(scDipendenti);
         while(dip!=null){
-            for(Presenze p: presenze)
-                if(dip.getCodiceFiscale().equals(p.getCodiceFiscale())){
-                    dip.setOreLavoro(p.getOreLavoro());
-                    break;//non è molto ortodosso
-                }
-                     
             dipendenti.add(dip);
             dip=read(scDipendenti);
         }
+    }
+
+    private Azienda(ArrayList<Dipendente> dipendenti){
+        this.dipendenti=dipendenti;
     }
 
     private Dipendente read(Scanner sc) throws Exception{
@@ -34,13 +24,65 @@ public class Azienda{
         id=sc.next();
         if(id.equals("OP"))
             return Operaio.read(sc);
-        else
+        else if(id.equals("DIR"))
             return Dirigente.read(sc);
+        else 
+            return null;
+    }
+
+    public void calcolaPrint(Scanner scPresenze, PrintStream ps) throws Exception{
+        Dipendente dip;
+        Presenze pres = Presenze.read(scPresenze);
+        
+        while(pres!=null){
+            dip=ricercaDipendentePerCodice(pres.getCodiceFiscale());
+            if(dip!=null){
+                double paga=dip.calcoloPaga(pres.getOreLavoro());
+                dip.print(ps);
+                ps.println("paga mensile: "+paga);
+            }
+            pres=Presenze.read(scPresenze);
+        }
+    }
+
+    public Dipendente ricercaDipendentePerCodice(String codiceFiscale){
+        boolean trovato=false;
+        int i=0;
+        while(i<dipendenti.size() && !trovato){
+            if(dipendenti.get(i).getCodiceFiscale().equals(codiceFiscale)){
+                trovato=true;
+            }else
+                i++;
+
+        }
+        if(trovato)
+            return dipendenti.get(i);
+        return null;
+    }
+
+    public Azienda filtroCnome(String cnome){
+        ArrayList<Dipendente> dipendentiFilter = new ArrayList<Dipendente>();
+
+        for(Dipendente dip: this.dipendenti)
+            if(dip.getCnome().equals(cnome))
+                dipendentiFilter.add(dip);
+        
+        return new Azienda(dipendentiFilter);
+    }
+
+     public Azienda filtroOP(){
+        ArrayList<Dipendente> dipendentiFilter = new ArrayList<Dipendente>();
+
+        for(Dipendente dip: this.dipendenti)
+            if(dip instanceof Operaio)
+                dipendentiFilter.add(dip);
+        
+        return new Azienda(dipendentiFilter);
     }
 
     public void print(PrintStream ps){
         for(Dipendente dip: dipendenti)
-            ps.println(dip.getCodiceFiscale()+" "+dip.getNome()+" "+dip.getCnome()+" "+dip.calcoloPaga());
+            dip.print(ps);
     }
 
     private ArrayList<Dipendente> dipendenti;

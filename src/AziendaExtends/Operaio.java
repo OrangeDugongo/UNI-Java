@@ -10,21 +10,23 @@ public class Operaio extends Dipendente{
     }
 
     public void print(PrintStream ps){
-        super.print(ps);
-        ps.println(funzione);
-        ps.println(livello);
+        ps.print(getCodiceFiscale()+" ");
+        ps.print(getNome()+" ");
+        ps.print(getCnome()+" ");
+        ps.print(funzione+" ");
+        ps.print(livello+" ");
+        ps.println(getPaga());
     }
 
     public String toString(){
         return super.toString()+" "+funzione+" "+livello;
     }
 
-    public double calcoloPaga(){
-        int oreLavoro=super.getOreLavoro();
+    public double calcoloPaga(int oreLavoro){
         if(oreLavoro>165)
             return ((oreLavoro-165)*0.3+165)*super.getPaga();
         else
-            return super.calcoloPaga();
+            return oreLavoro*getPaga();
     }
 
     public static Operaio read(Scanner sc) throws Exception{
@@ -45,6 +47,14 @@ public class Operaio extends Dipendente{
         paga=sc.nextDouble();
 
         return new Operaio(codiceFiscale, nome, cnome, paga, funzione, livello);
+    }
+
+    public String getLivello(){
+        return livello;
+    }
+
+    public String getFunzione(){
+        return funzione;
     }
 
     private String livello;

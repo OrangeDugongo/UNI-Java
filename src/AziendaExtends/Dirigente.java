@@ -9,8 +9,11 @@ public class Dirigente extends Dipendente{
     }
 
     public void print(PrintStream ps){
-        super.print(ps);
-        ps.println(areaResponsabilità);
+        ps.print(getCodiceFiscale()+" ");
+        ps.print(getNome()+" ");
+        ps.print(getCnome()+" ");
+        ps.print(areaResponsabilità+" ");
+        ps.println(getPaga());
     }
 
     public static Dirigente read(Scanner sc) throws Exception{
@@ -28,6 +31,14 @@ public class Dirigente extends Dipendente{
         paga=sc.nextDouble();
 
         return new Dirigente(codiceFiscale, nome, cnome, paga, areaResponsabilità);
+    }
+
+    public String getAreaResponsabilità(){
+        return areaResponsabilità;
+    }
+
+    public double calcoloPaga(int oreLavoro){
+         return oreLavoro*getPaga();
     }
 
     private String areaResponsabilità;

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.io.PrintStream;
 
-public class Dipendente{
+public abstract class Dipendente{
 
     public Dipendente(String codiceFiscale, String nome, String cnome, double paga){
 
@@ -9,13 +9,9 @@ public class Dipendente{
         this.nome=nome;
         this.cnome=cnome;
         this.paga=paga;
-        this.oreLavoro=0;
     }
 
-    public double calcoloPaga(){
-        return oreLavoro*getPaga();
-    }
-
+    public abstract double calcoloPaga(int oreLavoro);
     //METODI GET
 
     public String getCodiceFiscale(){
@@ -34,13 +30,6 @@ public class Dipendente{
         return paga;
     }
 
-    public int getOreLavoro(){
-        return oreLavoro;
-    }
-
-    public void setOreLavoro(int ore){
-        oreLavoro=ore;
-    }
 
 
 
@@ -50,13 +39,8 @@ public class Dipendente{
         return codiceFiscale+" "+nome+" "+cnome+" "+paga;
     }
 
-    public void print(PrintStream ps){
-        ps.println(codiceFiscale);
-        ps.println(nome);
-        ps.println(cnome);
-        ps.println(paga);
-    }
-
+    public abstract void print(PrintStream ps);
+/*
     public static Dipendente read(Scanner sc) throws Exception{
         String codiceFiscale, nome, cnome;
         double paga;
@@ -71,13 +55,12 @@ public class Dipendente{
         paga=sc.nextDouble();
 
         return new Dipendente(codiceFiscale, nome, cnome, paga);
-    }
+    }*/
 
 
-    private String codiceFiscale;
-    private String nome;
-    private String cnome;
-    private double paga;
-    private int oreLavoro;
+    protected String codiceFiscale;
+    protected String nome;
+    protected String cnome;
+    protected double paga;
 
 }
