@@ -40,7 +40,8 @@ public abstract class Dipendente{
     }
 
     public abstract void print(PrintStream ps);
-/*
+
+/* Non può essere utilizzata perché la classe è definita abstract
     public static Dipendente read(Scanner sc) throws Exception{
         String codiceFiscale, nome, cnome;
         double paga;
@@ -55,12 +56,13 @@ public abstract class Dipendente{
         paga=sc.nextDouble();
 
         return new Dipendente(codiceFiscale, nome, cnome, paga);
-    }*/
+    }
+*/
 
 
-    protected String codiceFiscale;
-    protected String nome;
-    protected String cnome;
-    protected double paga;
+    private String codiceFiscale;
+    private String nome;
+    private String cnome;
+    private double paga;
 
 }
