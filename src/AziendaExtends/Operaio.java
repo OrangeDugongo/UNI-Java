@@ -24,7 +24,7 @@ public class Operaio extends Dipendente{
         if(oreLavoro>165)
             return ((oreLavoro-165)*0.3+165)*super.getPaga();
         else
-            return oreLavoro*super.getPaga();
+            return super.calcoloPaga();
     }
 
     public static Operaio read(Scanner sc) throws Exception{
