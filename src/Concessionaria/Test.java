@@ -7,6 +7,10 @@ public class Test{
         Scanner scNuove = new Scanner(new File("nuove.dat"));
         Scanner scUsate = new Scanner(new File("usate.dat"));
         Concessionaria con = new Concessionaria(scNuove, scUsate);
-        con.filtroAnnoImmatricolazione(2015).print(System.out);
+        //con.filtroAnnoImmatricolazione(2015).print(System.out);
+        System.out.println("Decrescente");
+        con.sortDecrescente().print(System.out);
+        System.out.println("Crescente");
+        con.sortCrescente().print(System.out);
     }
 }

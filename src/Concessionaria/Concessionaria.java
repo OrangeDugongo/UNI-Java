@@ -34,6 +34,39 @@ public class Concessionaria{
         }
     }
 
+    public boolean swap(int i){
+        Auto tmp=auto.get(i);
+        auto.set(i, auto.get(i+1));
+        auto.set(i+1, tmp);
+        return false;
+    }
+
+    public Concessionaria sortDecrescente(){
+        boolean ordinato;
+        int j=auto.size()-1;
+        do{
+            ordinato=true;
+            for(int i=0; i<j; i++)
+                if(auto.get(i).getPrezzo()<auto.get(i+1).getPrezzo())
+                    ordinato=swap(i);
+        }while(j-->1 && !ordinato);
+
+        return new Concessionaria(auto);
+    }
+
+    public Concessionaria sortCrescente(){
+        boolean ordinato;
+        int j=auto.size()-1;
+        do{
+            ordinato=true;
+            for(int i=0; i<j; i++)
+                if(auto.get(i).getPrezzo()>auto.get(i+1).getPrezzo())
+                    ordinato=swap(i);
+        }while(j-->1 && !ordinato);
+
+         return new Concessionaria(auto);
+    }
+
     public Concessionaria filtroUsato(){
         ArrayList<Auto> autoFilter = new ArrayList<Auto>();
         for(Auto a: auto)
