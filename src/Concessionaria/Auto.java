@@ -55,7 +55,7 @@ public class Auto{
         if(!sc.hasNext()) return null;
         cilindrata=sc.next();
         if(!sc.hasNextDouble()) return null;
-        prezzo=sc.nextInt();
+        prezzo=sc.nextDouble();
 
         return new Auto(costruttore, modello, colore, cilindrata, prezzo);
     }
