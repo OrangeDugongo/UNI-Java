@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.io.IOException;
 
 public class Azienda{
 
@@ -20,14 +21,20 @@ public class Azienda{
     private Dipendente read(Scanner sc) throws Exception{
         String id;
 
-        if(!sc.hasNext()) return null;
-        id=sc.next();
-        if(id.equals("OP"))
-            return Operaio.read(sc);
-        else if(id.equals("DIR"))
-            return Dirigente.read(sc);
-        else 
+        try{
+            if(!sc.hasNext()) return null;
+            id=sc.next();
+            if(id.equals("OP"))
+                return Operaio.read(sc);
+            else if(id.equals("DIR"))
+                return Dirigente.read(sc);
+            else 
+                throw new IOException("Classe non presente");
+        }
+        catch(IOException Exception){
+            System.err.println("***"+Exception.getMessage()+"***");
             return null;
+        }
     }
 
     public void calcolaPrint(Scanner scPresenze, PrintStream ps) throws Exception{
@@ -37,9 +44,15 @@ public class Azienda{
         while(pres!=null){
             dip=ricercaDipendentePerCodice(pres.getCodiceFiscale());
             if(dip!=null){
-                double paga=dip.calcoloPaga(pres.getOreLavoro());
-                dip.print(ps);
-                ps.println("paga mensile: "+paga);
+                try{
+                    double paga=dip.calcoloPaga(pres.getOreLavoro());
+                    if(paga<=0) throw new IOException("Dipendente lavativo");
+                    dip.print(ps);
+                    ps.println("paga mensile: "+paga);
+                }
+                catch(IOException Exception){
+                    System.err.println("Il dipendente "+dip.getNome()+" "+dip.getCnome()+" non ha svolto il suo lavoro");
+                }
             }
             pres=Presenze.read(scPresenze);
         }

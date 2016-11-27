@@ -31,7 +31,7 @@ public class Operaio extends Dipendente{
 
     public static Operaio read(Scanner sc) throws Exception{
         String nome, cnome, livello, funzione, codiceFiscale;
-        double paga;
+        double paga=0;
 
         if(!sc.hasNext()) return null;
         codiceFiscale=sc.next();
@@ -44,7 +44,16 @@ public class Operaio extends Dipendente{
         if(!sc.hasNext()) return null;
         livello=sc.next();
         if(!sc.hasNextDouble()) return null;
-        paga=sc.nextDouble();
+        try{
+            paga=sc.nextDouble();
+            if(paga<0) throw new RuntimeException("Paga minore di zero");
+        }
+
+        catch(RuntimeException Exception){
+            System.err.println("***"+Exception.getMessage()+"***");
+            System.err.println("Paga di "+nome+" "+cnome+" impostata come valore assoluto");
+            paga=-paga;
+        }
 
         return new Operaio(codiceFiscale, nome, cnome, paga, funzione, livello);
     }

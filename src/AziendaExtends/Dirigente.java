@@ -1,5 +1,6 @@
 import java.io.PrintStream;
 import java.util.Scanner;
+import java.lang.RuntimeException;
 
 public class Dirigente extends Dipendente{
 
@@ -18,7 +19,7 @@ public class Dirigente extends Dipendente{
 
     public static Dirigente read(Scanner sc) throws Exception{
         String nome, cnome, areaResponsabilità, codiceFiscale;
-        double paga;
+        double paga=0;
         if(!sc.hasNext()) return null;
         codiceFiscale=sc.next();
         if(!sc.hasNext()) return null;
@@ -28,7 +29,16 @@ public class Dirigente extends Dipendente{
         if(!sc.hasNext()) return null;
         areaResponsabilità=sc.next();
         if(!sc.hasNextDouble()) return null;
-        paga=sc.nextDouble();
+        try{
+            paga=sc.nextDouble();
+            if(paga<0) throw new RuntimeException("Paga minore di zero");
+        }
+
+        catch(RuntimeException Exception){
+            System.err.println("***"+Exception.getMessage()+"***");
+            System.err.println("Paga di "+nome+" "+cnome+" impostata come valore assoluto"); 
+            paga=-paga;
+        }
 
         return new Dirigente(codiceFiscale, nome, cnome, paga, areaResponsabilità);
     }
