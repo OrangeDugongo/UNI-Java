@@ -21,19 +21,15 @@ public class Azienda{
     private Dipendente read(Scanner sc) throws Exception{
         String id;
 
-        try{
-            if(!sc.hasNext()) return null;
-            id=sc.next();
-            if(id.equals("OP"))
-                return Operaio.read(sc);
-            else if(id.equals("DIR"))
-                return Dirigente.read(sc);
-            else 
-                throw new IOException("Classe non presente");
-        }
-        catch(IOException Exception){
-            System.err.println("***"+Exception.getMessage()+"***");
-            return null;
+        if(!sc.hasNext()) return null;
+        id=sc.next();
+        if(id.equals("OP"))
+            return Operaio.read(sc);
+        else if(id.equals("DIR"))
+            return Dirigente.read(sc);
+        else{
+            sc.nextLine();
+            return read(sc);
         }
     }
 
