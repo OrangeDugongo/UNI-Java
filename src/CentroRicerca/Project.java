@@ -1,13 +1,8 @@
-package com.gmail.zurlo.michelef.classi;
-
 import java.io.PrintStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
-
-import com.gmail.zurlo.michelef.util.Constants;
-import com.gmail.zurlo.michelef.util.IllegalDateException;
 
 public class Project {
 

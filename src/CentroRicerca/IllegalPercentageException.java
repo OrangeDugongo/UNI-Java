@@ -1,5 +1,3 @@
-package com.gmail.zurlo.michelef.util;
-
 public class IllegalPercentageException extends RuntimeException {
 
 	public IllegalPercentageException() {

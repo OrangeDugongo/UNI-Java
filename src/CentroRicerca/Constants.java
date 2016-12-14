@@ -1,5 +1,3 @@
-package com.gmail.zurlo.michelef.util;
-
 import java.text.SimpleDateFormat;
 
 public class Constants {

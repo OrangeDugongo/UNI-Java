@@ -1,11 +1,7 @@
-package com.gmail.zurlo.michelef.classi;
-
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-
-import com.gmail.zurlo.michelef.util.IncorrectLabelException;
 
 public class ResearchCenter {
 
@@ -82,6 +78,16 @@ public class ResearchCenter {
 				projectsFilter.add(p);
 			}
 		}
+
+		return new ResearchCenter(projectsFilter);
+	}
+
+	public ResearchCenter researchProjectFilter(){
+		ArrayList<Project> projectsFilter = new ArrayList<Project>();
+
+		for(Project p: project)
+			if(p istanceof ResearchProject)
+				projectsFilter.add(p);
 
 		return new ResearchCenter(projectsFilter);
 	}

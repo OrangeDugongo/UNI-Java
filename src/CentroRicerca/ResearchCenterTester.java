@@ -1,10 +1,6 @@
-package com.gmail.zurlo.michelef.scenari;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
-import com.gmail.zurlo.michelef.classi.ResearchCenter;
 
 public class ResearchCenterTester {
 

@@ -1,13 +1,6 @@
-package com.gmail.zurlo.michelef.scenari;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
-import com.gmail.zurlo.michelef.classi.IndustrialProject;
-import com.gmail.zurlo.michelef.classi.Project;
-import com.gmail.zurlo.michelef.classi.ResearchProject;
-import com.gmail.zurlo.michelef.util.IncorrectLabelException;
 
 public class ProjectTester {
 

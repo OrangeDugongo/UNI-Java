@@ -1,10 +1,6 @@
-package com.gmail.zurlo.michelef.classi;
-
 import java.io.PrintStream;
 import java.util.Date;
 import java.util.Scanner;
-
-import com.gmail.zurlo.michelef.util.IllegalPercentageException;
 
 public class IndustrialProject extends Project {
 
