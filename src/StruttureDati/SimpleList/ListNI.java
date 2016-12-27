@@ -15,7 +15,7 @@ public class ListNI extends SimpleList{
         }
     }
 
-    public void remAt(int pos, Object elem){
+    public void remAt(int pos){
         if(pos==0)
             remHead();
         else if(!isEmpty()){
