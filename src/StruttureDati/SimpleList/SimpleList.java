@@ -33,7 +33,7 @@ public class SimpleList{
         len++;
     }
 
-    public void remHead();{
+    public void remHead(){
         if(node!=null){
             node=node.next;
             len--;
