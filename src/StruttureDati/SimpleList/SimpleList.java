@@ -40,6 +40,6 @@ public class SimpleList{
         }
     }
 
-    private Node node;
-    private int len; 
+    protected Node node;
+    protected int len; 
 }
