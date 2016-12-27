@@ -21,7 +21,7 @@ public class ListNI extends SimpleList{
         else if(!isEmpty()){
             Object headElem=head();
             remHead();
-            remAt(pos-1, elem);
+            remAt(pos-1);
             addHead(headElem);
         }
     }
