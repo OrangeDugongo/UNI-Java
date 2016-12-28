@@ -20,6 +20,10 @@ public class Canzone{
         return album;
     }
 
+    public String toString(){
+        return titolo+" "+autore+" "+album+".";
+    }
+
     public static Canzone read(Scanner sc){
         String titolo, autore, album;
         if(!sc.hasNext()) return null;

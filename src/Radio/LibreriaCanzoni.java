@@ -17,6 +17,10 @@ public class LibreriaCanzoni{
         this.lib=lib;
     }
 
+    public LinkedList<Canzone> getLib(){
+        return lib;
+    }
+
     public LibreriaCanzoni filtroAutore(String autore){
         LinkedList<Canzone> newLib = new LinkedList<Canzone>();
         ListIterator<Canzone> iter = lib.listIterator();
@@ -29,7 +33,7 @@ public class LibreriaCanzoni{
         return new LibreriaCanzoni(newLib);
     }
 
-      public LibreriaCanzoni filtroTitolo(String titolo){
+    public LibreriaCanzoni filtroTitolo(String titolo){
         LinkedList<Canzone> newLib = new LinkedList<Canzone>();
         ListIterator<Canzone> iter = lib.listIterator();
         while(iter.hasNext()){
@@ -41,7 +45,7 @@ public class LibreriaCanzoni{
         return new LibreriaCanzoni(newLib);
     }
 
-      public LibreriaCanzoni filtroAlbum(String album){
+    public LibreriaCanzoni filtroAlbum(String album){
         LinkedList<Canzone> newLib = new LinkedList<Canzone>();
         ListIterator<Canzone> iter = lib.listIterator();
         while(iter.hasNext()){
