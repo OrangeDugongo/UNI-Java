@@ -42,14 +42,23 @@ public class Archivio{
         }
     }
 
-    public Archivio filtroAutore(String autore){
-       Set<Opera> nuovoSet = new HashSet<Opera>();
-       for(Opera o: archivio)
-           if(o.getAutore().equals(autore))
-            nuovoSet.add(o);
+    public Archivio filtroStringa(FiltroStringa fs, String stringa){
+        Set<Opera> nuovoSet = new HashSet<Opera>();
+        for(Opera o: archivio)
+            if(fs.getString(o).equals(stringa))
+                nuovoSet.add(o);
 
-       return new Archivio(nuovoSet); 
-   }
+        return new Archivio(nuovoSet); 
+    }
+
+    public Archivio filtroAnno(int anno){
+        Set<Opera> nuovoSet = new HashSet<Opera>();
+        for(Opera o: archivio)
+            if(o.getAnno()==anno)
+                nuovoSet.add(o);
+
+        return new Archivio(nuovoSet); 
+    }
     
     private Set<Opera> archivio;
 }
