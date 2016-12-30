@@ -51,6 +51,10 @@ public class Archivio{
         return new Archivio(nuovoSet); 
     }
 
+    public Archivio filtroPosizione(String stringa){
+        return filtroStringa(new FiltroPosizione(), stringa);
+    }
+
     public Archivio filtroAnno(int anno){
         Set<Opera> nuovoSet = new HashSet<Opera>();
         for(Opera o: archivio)

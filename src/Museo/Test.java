@@ -13,7 +13,7 @@ public class Test{
 
         System.out.println("****");
 
-        arch.filtroStringa(new FiltroAutore(), "Autore1").filtroStringa(new FiltroPosizione(), "4D").print(System.out);
+        arch.filtroStringa(new FiltroAutore(), "Autore1").filtroPosizione("4D").print(System.out);
 
         System.out.println("****");
 
