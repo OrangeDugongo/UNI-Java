@@ -8,6 +8,10 @@ public class Stampa extends Opera{
         this.tecnica=tecnica;
     }
 
+    public String getTecnica(){
+        return tecnica;
+    }
+
     public int hashCode(){
         return super.hashCode()*tecnica.hashCode();
     }

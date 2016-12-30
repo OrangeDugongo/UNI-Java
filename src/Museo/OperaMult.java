@@ -8,6 +8,10 @@ public class OperaMult extends Opera{
         this.supporto=supporto;
     }
 
+    public String getSupporto(){
+        return supporto;
+    }
+
     public int hashCode(){
         return super.hashCode()*supporto.hashCode();
     }

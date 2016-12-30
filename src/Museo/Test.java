@@ -13,10 +13,10 @@ public class Test{
 
         System.out.println("****");
 
-        arch.filtroStringa(new FiltroAutore(), "Autore1").print(System.out);
+        arch.filtroStringa(new FiltroAutore(), "Autore1").filtroStringa(new FiltroPosizione(), "4D").print(System.out);
 
         System.out.println("****");
 
-        arch.filtroAnno(2000).print(System.out);
+        arch.filtroStringa(new FiltroTecnica(), "Pergamena").filtroAnno(1999).print(System.out);
     }
 }
