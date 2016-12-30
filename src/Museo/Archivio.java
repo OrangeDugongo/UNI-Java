@@ -33,12 +33,7 @@ public class Archivio{
 
     public void print(PrintStream ps){
         for(Opera o: archivio){
-            if(o instanceof Libro)
-                ((Libro) o).print(ps);
-            if(o instanceof Stampa)
-                ((Stampa) o).print(ps);
-            if(o instanceof OperaMult)
-                ((OperaMult) o).print(ps);
+            o.print(ps);
         }
     }
 
