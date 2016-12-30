@@ -1,6 +1,7 @@
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Scanner;
+import java.util.function.Predicate;
 import java.io.PrintStream;
 
 public class Archivio{
@@ -37,42 +38,112 @@ public class Archivio{
         }
     }
 
-    public Archivio filtroStringa(FiltroStringa fs, String stringa){
-        Set<Opera> nuovoSet = new HashSet<Opera>();
-        for(Opera o: archivio)
-            if(fs.getString(o).equals(stringa))
-                nuovoSet.add(o);
-
-        return new Archivio(nuovoSet); 
+    public Archivio filtroPosizione(String pos){
+        return filtro(new PredicatePosizione(pos));
     }
 
-    public Archivio filtroPosizione(String stringa){
-        return filtroStringa(new FiltroPosizione(), stringa);
+    public Archivio filtroAutore(String autore){
+        return filtro(new PredicateAutore(autore));
     }
 
-    public Archivio filtroAutore(String stringa){
-        return filtroStringa(new FiltroAutore(), stringa);
+    public Archivio filtroTitolo(String titolo){
+        return filtro(new PredicateTitolo(titolo));
     }
 
-    public Archivio filtroTitolo(String stringa){
-        return filtroStringa(new FiltroTitolo(), stringa);
+    public Archivio filtroTecnica(String tecnica){
+        return filtro(new PredicateTecnica(tecnica));
     }
 
-    public Archivio filtroTecnica(String stringa){
-        return filtroStringa(new FiltroTecnica(), stringa);
-    }
-
-    public Archivio filtroSupporto(String stringa){
-        return filtroStringa(new FiltroSupporto(), stringa);
+    public Archivio filtroSupporto(String supporto){
+        return filtro(new PredicateSupporto(supporto));
     }
 
     public Archivio filtroAnno(int anno){
-        Set<Opera> nuovoSet = new HashSet<Opera>();
-        for(Opera o: archivio)
-            if(o.getAnno()==anno)
-                nuovoSet.add(o);
+        return filtro(new PredicateAnno(anno));
+    }
 
-        return new Archivio(nuovoSet); 
+    public Archivio filtro(Predicate<Opera> predicate){
+        Set<Opera> archivioFilter = new HashSet<Opera>();
+        for(Opera o: archivio)
+            if(predicate.test(o))
+                archivioFilter.add(o);
+
+        return new Archivio(archivioFilter); 
+    }
+
+
+    //Predicate's class'
+
+    class PredicateAutore implements Predicate<Opera>{
+        public PredicateAutore(String autore){
+            this.autore=autore;
+        }
+
+        public boolean test(Opera o){
+            return o.getAutore().equals(autore);
+        }
+
+        private String autore;
+    }
+
+    class PredicateTitolo implements Predicate<Opera>{
+        public PredicateTitolo(String titolo){
+            this.titolo=titolo;
+        }
+
+        public boolean test(Opera o){
+            return o.getTitolo().equals(titolo);
+        }
+
+        private String titolo;
+    }
+
+    class PredicateAnno implements Predicate<Opera>{
+        public PredicateAnno(int anno){
+            this.anno=anno;
+        }
+
+        public boolean test(Opera o){
+            return o.getAnno()==anno;
+        }
+
+        private int anno;
+    }
+
+    class PredicateTecnica implements Predicate<Opera>{
+        public PredicateTecnica(String tecnica){
+            this.tecnica=tecnica;
+        }
+
+        public boolean test(Opera o){
+            return o instanceof Stampa && ((Stampa) o).getTecnica().equals(tecnica);
+        }
+
+        private String tecnica;
+    }
+
+    class PredicateSupporto implements Predicate<Opera>{
+        public PredicateSupporto(String supporto){
+            this.supporto=supporto;
+        }
+
+        public boolean test(Opera o){
+            return o instanceof OperaMult && ((OperaMult) o).getSupporto().equals(supporto);
+        }
+
+        private String supporto;
+    }
+
+    class PredicatePosizione implements Predicate<Opera>{
+        public PredicatePosizione(String pos){
+            this.pos=pos;
+        }
+
+        public boolean test(Opera o){
+            return o.getPos().equals(pos);
+        }
+
+        private String pos;
     }
     
     private Set<Opera> archivio;
