@@ -31,7 +31,13 @@ public class OperaMult extends Opera{
         if(!sc.hasNextLine()) return null;
         supporto=sc.nextLine();
         if(!sc.hasNextLine()) return null;
-        anno=Integer.parseInt(sc.nextLine());
+        try{
+            anno=Integer.parseInt(sc.nextLine());
+        }
+        catch(NumberFormatException exception){
+            System.err.println("Anno non inserito correttamente.\nAnno impostato a zero");
+            anno=0;
+        }
         if(!sc.hasNextLine()) return null;
         pos=sc.nextLine();
         if(!sc.hasNextLine()) return null;
