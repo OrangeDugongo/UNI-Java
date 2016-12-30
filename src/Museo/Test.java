@@ -9,14 +9,14 @@ public class Test{
 
         Archivio arch=new Archivio(scMult, scLibri, scStampe);
 
-        arch.filtroStringa(new FiltroTitolo(), "Titolo1").print(System.out);
+        arch.filtroTitolo("Titolo1").print(System.out);
 
         System.out.println("****");
 
-        arch.filtroStringa(new FiltroAutore(), "Autore1").filtroPosizione("4D").print(System.out);
+        arch.filtroAutore("Autore1").filtroPosizione("4D").print(System.out);
 
         System.out.println("****");
 
-        arch.filtroStringa(new FiltroTecnica(), "Pergamena").filtroAnno(1999).print(System.out);
+        arch.filtroTecnica("Pergamena").filtroAnno(1999).print(System.out);
     }
 }

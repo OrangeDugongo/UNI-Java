@@ -50,6 +50,22 @@ public class Archivio{
         return filtroStringa(new FiltroPosizione(), stringa);
     }
 
+    public Archivio filtroAutore(String stringa){
+        return filtroStringa(new FiltroAutore(), stringa);
+    }
+
+    public Archivio filtroTitolo(String stringa){
+        return filtroStringa(new FiltroTitolo(), stringa);
+    }
+
+    public Archivio filtroTecnica(String stringa){
+        return filtroStringa(new FiltroTecnica(), stringa);
+    }
+
+    public Archivio filtroSupporto(String stringa){
+        return filtroStringa(new FiltroSupporto(), stringa);
+    }
+
     public Archivio filtroAnno(int anno){
         Set<Opera> nuovoSet = new HashSet<Opera>();
         for(Opera o: archivio)
