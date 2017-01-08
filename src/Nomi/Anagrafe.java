@@ -1,11 +1,15 @@
 import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Anagrafe{
 
     public Anagrafe(Scanner sc)throws Exception{
-        registro = new ArrayList<Persona>();
+        Comparator<Persona> cmp=new PersonaComparator();
+        registro = new TreeSet<Persona>(cmp);
         Persona p = Persona.read(sc);
         while(p!=null){
             registro.add(p);
@@ -14,7 +18,7 @@ public class Anagrafe{
     }
 
     private Anagrafe(ArrayList<Persona> registro){
-        this.registro=registro;
+        //this.registro=registro;
     }
 
     public void print(PrintStream ps){
@@ -43,6 +47,19 @@ public class Anagrafe{
         
     }
 
-    private ArrayList<Persona> registro;
+    private Set<Persona> registro;
 
+}
+
+class PersonaComparator implements Comparator<Persona>{
+    public int compare(Persona p1, Persona p2){
+        int cmp=p1.getDataDiNascita().compareTo(p2.getDataDiNascita());
+        if(cmp==0){
+            cmp=p1.getCognome().compareTo(p2.getCognome());
+            if(cmp==0){
+                cmp=p1.getNome().compareTo(p2.getNome());
+            }
+        }
+        return cmp;
+    }
 }

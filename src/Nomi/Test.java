@@ -7,7 +7,5 @@ public class Test{
         Scanner sc = new Scanner(fl);
         Anagrafe an=new Anagrafe(sc);
         an.print(System.out);
-        System.out.println("*******");
-        an.filtroCognome("due").filtroNome("noemi").print(System.out);
     }
 }

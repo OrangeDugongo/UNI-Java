@@ -49,6 +49,7 @@ public class Persona{
         ps.println(nome);
         ps.println(cognome);
         ps.println(sdf.format(dataDiNascita));
+        ps.println("*****");
 
     }
 
