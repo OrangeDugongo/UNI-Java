@@ -78,7 +78,7 @@ public class Persona{
             peso=Double.parseDouble(sc.nextLine());
         }
         catch(NumberFormatException exception){
-            System.err.println("Impossibile convertire la stringa in data");
+            System.err.println("Impossibile convertire la stringa in double");
             System.err.println("Peso impostato a 0");
             peso=0;
         }
@@ -87,7 +87,7 @@ public class Persona{
             altezza=Double.parseDouble(sc.nextLine());
         }
         catch(NumberFormatException exception){
-            System.err.println("Impossibile convertire la stringa in data");
+            System.err.println("Impossibile convertire la stringa in double");
             System.err.println("altezza impostata a 0");
             altezza=0;
         }
