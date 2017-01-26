@@ -60,7 +60,7 @@ public class Prestito{
             start=sdf.parse(sc.nextLine());
         }
         catch(ParseException exception){
-            start=new Date();
+            start=new Date(0);
         }
 		if(!sc.hasNextLine()) return null;
          try{
