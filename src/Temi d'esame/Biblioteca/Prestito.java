@@ -35,6 +35,10 @@ public class Prestito{
         return end;
     }
 
+    public Libro getLibro(){
+        return libro;
+    }
+
     public void setEnd(Date end){
         this.end=end;
     }

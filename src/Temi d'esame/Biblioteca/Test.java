@@ -15,6 +15,6 @@ public class Test{
         }
         
         Biblioteca bl1 = new Biblioteca(scP, scL);
-        bl1.printStoricoPrestiti(System.out);
+        bl1.filtroPrestitoByNome("Noemi").printStricoUtente(System.out);
     }
 }

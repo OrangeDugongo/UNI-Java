@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.io.PrintStream;
 import java.util.Scanner;
+import java.util.Iterator;
 
 public class Libro {
 	
@@ -32,8 +33,24 @@ public class Libro {
 		return autori;
 	}
 
+	public ArrayList<Prestito> getPrestiti() {
+		return prestiti;
+	}
+
 	public void addPrestito(Prestito p){
 		prestiti.add(p);
+	}
+
+	public boolean hasAutore(String autore){
+		String s=null;
+		Iterator<String> iter = autori.iterator();
+		boolean trovato=false;
+		while(iter.hasNext() && !trovato){
+			s=iter.next();
+			trovato=s.equals(autore);
+		}
+
+		return trovato;
 	}
 	
 	public static Libro read(Scanner sc){

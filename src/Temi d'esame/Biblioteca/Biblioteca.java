@@ -20,7 +20,7 @@ public class Biblioteca{
         Prestito p=Prestito.read(scP);
         while(p!=null){
             try{
-                l=libroSearch(p.getID()); // ricerca del libro
+                l=libroSearchByID(p.getID()); // ricerca del libro
                 p.setLibro(l); // se il libro esiste viene linkato al prestito
                 l.addPrestito(p); // il prestito viene linkato al libro
                 prestiti.add(p); // il orestito viene agginto alla lista dei prestiti       
@@ -34,7 +34,12 @@ public class Biblioteca{
         }
     }
 
-    private Libro libroSearch(String id){
+    public Biblioteca(ArrayList<Libro> libri, ArrayList<Prestito> prestiti){
+        this.prestiti=prestiti;
+        this.libri=libri;
+    }
+
+    private Libro libroSearchByID(String id){
         Iterator<Libro> iter = libri.iterator();
         boolean trovato=false;
         Libro l=null;
@@ -55,6 +60,55 @@ public class Biblioteca{
             l.printPrestiti(ps);
             ps.println("*****");
         }
+    }
+
+    public void printStricoUtente(PrintStream ps){
+        for(Prestito p: prestiti){
+            ps.print(p.toString()+" ");
+            ps.println(p.getLibro().toString());
+        }
+    }
+
+    public Biblioteca filtroLibroByID(String id){
+        ArrayList<Prestito> prestitiFilter=new ArrayList<Prestito>();
+        ArrayList<Libro> libriFilter= new ArrayList<Libro>();
+        Libro l=libroSearchByID(id);
+        libriFilter.add(l);
+        prestitiFilter.addAll(l.getPrestiti());
+        return new Biblioteca(libriFilter, prestitiFilter);
+    }
+
+    public Biblioteca filtroLibroByTitolo(String titolo){
+        ArrayList<Prestito> prestitiFilter=new ArrayList<Prestito>();
+        ArrayList<Libro> libriFilter= new ArrayList<Libro>();
+        for(Libro l: libri)
+            if(l.getTitolo().equals(titolo)){
+                libriFilter.add(l);
+                prestitiFilter.addAll(l.getPrestiti());
+            }
+        return new Biblioteca(libriFilter, prestitiFilter);
+    }
+
+    public Biblioteca filtroLibroByAutore(String autore){
+        ArrayList<Prestito> prestitiFilter=new ArrayList<Prestito>();
+        ArrayList<Libro> libriFilter= new ArrayList<Libro>();
+        for(Libro l: libri)
+            if(l.hasAutore(autore)){
+                libriFilter.add(l);
+                prestitiFilter.addAll(l.getPrestiti());
+            }
+        return new Biblioteca(libriFilter, prestitiFilter);
+    }
+
+    public Biblioteca filtroPrestitoByNome(String nome){
+        ArrayList<Prestito> prestitiFilter=new ArrayList<Prestito>();
+        ArrayList<Libro> libriFilter= new ArrayList<Libro>();
+        for(Prestito p: prestiti)
+            if(p.getNome().equals(nome)){
+                libriFilter.add(p.getLibro());
+                prestitiFilter.add(p);
+            }
+        return new Biblioteca(libriFilter, prestitiFilter);
     }
 
 
