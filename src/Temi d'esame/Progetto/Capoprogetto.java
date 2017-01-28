@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Date;
+import java.io.PrintStream;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
@@ -13,7 +14,7 @@ public class Capoprogetto {
 		this.cognome = cognome;
 		this.data = data;
 		this.progetti = null;
-		
+		progetti = new ArrayList<Progetto>();
 	}
 	
 	public String getMatricola() {
@@ -28,7 +29,7 @@ public class Capoprogetto {
 		return cognome;
 	}
 
-	public ArrayList<Progetto> getProgetto() {
+	public ArrayList<Progetto> getProgetti() {
 		return progetti;
 	}
 
@@ -42,6 +43,11 @@ public class Capoprogetto {
 
 	public void addProgetto(Progetto p){
 		progetti.add(p);
+	}
+
+	public void printProgetti(PrintStream ps){
+		for(Progetto p: progetti)
+			ps.println(" + "+p.toString());
 	}
 
 	public static Capoprogetto read(Scanner sc){
